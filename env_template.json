@@ -1,0 +1,4 @@
+{
+  "weather_api_key": "api.weatherstack.com",
+  "mapbox_api_key": "api.mapbox.com"
+}
