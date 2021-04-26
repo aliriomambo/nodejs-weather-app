@@ -1,6 +1,9 @@
 const request = require('request')
+const path = require('path')
+
 const fs = require('fs');
-const rawdata = fs.readFileSync('../env.json');
+const envPath = path.join(__dirname, '../../env.json')
+const rawdata = fs.readFileSync(envPath);
 const keys = JSON.parse(rawdata);
 
 

@@ -1,9 +1,10 @@
 const request = require('request')
 const fs = require('fs');
-const rawdata = fs.readFileSync('../env.json');
+const path = require('path')
+
+const envPath = path.join(__dirname, '../../env.json')
+const rawdata = fs.readFileSync(envPath);
 const keys = JSON.parse(rawdata);
-
-
 
 
 const forecast = (latitude, longitude, callback) => {
