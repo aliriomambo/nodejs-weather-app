@@ -1,14 +1,9 @@
 const request = require('request')
-const path = require('path')
-
-const fs = require('fs');
-const envPath = path.join(__dirname, '../../env.json')
-const rawdata = fs.readFileSync(envPath);
-const keys = JSON.parse(rawdata);
+require('dotenv').config()
 
 
 const geocode = (address, callback) => {
-    const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + address + '.json?access_token=' + keys.mapbox_api_key + '&limit=1'
+    const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + address + '.json?access_token=' + process.env.MAPBOX_API_KEY + '&limit=1'
 
     request({url, json: true}, (error, {body}) => {
         if (error) {

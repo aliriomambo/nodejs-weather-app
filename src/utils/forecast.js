@@ -1,14 +1,10 @@
 const request = require('request')
-const fs = require('fs');
-const path = require('path')
+require('dotenv').config()
 
-const envPath = path.join(__dirname, '../../env.json')
-const rawdata = fs.readFileSync(envPath);
-const keys = JSON.parse(rawdata);
 
 
 const forecast = (latitude, longitude, callback) => {
-    const url = 'http://api.weatherstack.com/current?access_key=' + keys.weather_api_key + '&query=' + latitude + ',' + longitude
+    const url = 'http://api.weatherstack.com/current?access_key=' + process.env.WEATHER_API_KEY + '&query=' + latitude + ',' + longitude
 
     request({url, json: true}, (error, {body}) => {
         if (error) {
